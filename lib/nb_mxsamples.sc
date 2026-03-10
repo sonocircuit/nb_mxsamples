@@ -181,7 +181,7 @@ NB_mxsamples {
 				numBuffers.do({ |buf|
 					NB_mxsamples.clearSample(buf)
 				});
-				"mxsamples buffers freed".postln;
+				"nb mxsamples buffers freed".postln;
 			}, "/nb_mxsamples/free_buffers");
 
 			OSCFunc.new({ |msg|
@@ -189,7 +189,7 @@ NB_mxsamples {
 					NB_mxsamples.clearSample(buf)
 				});
 				mxGroup.free;
-				"mxsamples freed".postln;
+				"nb mxsamples freed".postln;
 			}, "/nb_mxsamples/free_all");
 
 		}
