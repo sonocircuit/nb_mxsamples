@@ -1,4 +1,4 @@
--- mx samples - nb edition v1.1 @sonoCircuit
+-- mx samples - nb edition v1.0 @sonoCircuit
 -- infinite thanks @infinitedigits!
 
 local fs = require 'fileselect'
