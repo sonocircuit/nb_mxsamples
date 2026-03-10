@@ -37,7 +37,7 @@ for i = 1, 128 do
 end
 
 local paramlist = {
-  "amp", "pan", "send_a", "send_b",
+  "amp", "pan", "spread", "send_a", "send_b",
   "instrument", "pitchbend", "trsp_midi", "trsp_smpl", "tune_smpl", "smpl_start",
   "velocity", "lpf_cutoff", "hpf_cutoff", "attack", "decay", "sustain", "release",
   "lpf_cutoff_mod", "hpf_cutoff_mod", "send_a_mod", "send_b_mod",
@@ -346,7 +346,7 @@ end
 --------------------------- params ---------------------------
 
 local function add_params()
-  params:add_group("nb_mxsamples_group", "mxsamples", 31)
+  params:add_group("nb_mxsamples_group", "mxsamples", 32)
   params:hide("nb_mxsamples_group")
 
   params:add_separator("nb_mxsamples_presets", "presets")
@@ -367,6 +367,9 @@ local function add_params()
 
   params:add_control("nb_mxsamples_pan", "pan", controlspec.new(-1, 1, "lin", 0, 0), function(param) return pan_display(param:get()) end)
   params:set_action("nb_mxsamples_pan", function(val) set_param('pan', val) end)
+
+  params:add_control("nb_mxsamples_spread", "spread", controlspec.new(0, 1, "lin", 0, 0), function(param) return round_form(param:get() * 100, 1, "%") end)
+  params:set_action("nb_mxsamples_spread", function(val) set_param('spread', val) end)
 
   params:add_control("nb_mxsamples_send_a", "send a", controlspec.new(0, 1, "lin", 0, 0), function(param) return round_form(param:get() * 100, 1, "%") end)
   params:set_action("nb_mxsamples_send_a", function(val) set_param('sendA', val) end)
