@@ -19,7 +19,7 @@ NB_mxsamples {
 
 				SynthDef(\mxPlayer, {
 					arg out, sendABus, sendBBus, bfr,
-					vel = 1, amp = 1, pan = 0, sendA = 0, sendB = 0, bndAmt = 1, bndDepth = 0,
+					vel = 1, amp = 1, pan = 0, spread = 0, sendA = 0, sendB = 0, bndAmt = 1, bndDepth = 0,
 					gate = 1, attack = 0.015, decay = 1, sustain = 1, release = 1.2,
 					smpStart = 0, sampleEnd = 1, rate = 1, lpfHz = 20000, hpfHz = 20,
 					modDepth = 0, lpfHzMod = 0, hpfHzMod = 0, sendAMod = 0, sendBMod = 0;
@@ -40,7 +40,7 @@ NB_mxsamples {
 					snd = PlayBuf.ar(2, bfr, rate, startPos: smpStart * 48000);
 					snd = LPF.ar(snd, lpfHz);
 					snd = HPF.ar(snd, hpfHz);
-					snd = Balance2.ar(snd[0], snd[1], pan);
+					snd = Splay.ar(snd, spread, amp, pan);
 					snd = snd * amp * vel * env;
 
 					DetectSilence.ar(snd, doneAction: 2);
